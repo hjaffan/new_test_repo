@@ -516,12 +516,6 @@ class XssTest extends UnitTestCase {
         'Image tag with data attribute',
         array('img')
       ),
-      array(
-        '<a data-a2a-url="foo"></a>',
-        '<a data-a2a-url="foo"></a>',
-        'Link tag with numeric data attribute',
-        array('a')
-      ),
     );
   }
 

@@ -18,13 +18,6 @@ use Drupal\simpletest\WebTestBase;
 class LocalePluralFormatTest extends WebTestBase {
 
   /**
-   * An admin user.
-   *
-   * @var \Drupal\user\Entity\User
-   */
-  protected $adminUser;
-
-  /**
    * Modules to enable.
    *
    * @var array
@@ -37,8 +30,8 @@ class LocalePluralFormatTest extends WebTestBase {
   protected function setUp() {
     parent::setUp();
 
-    $this->adminUser = $this->drupalCreateUser(array('administer languages', 'translate interface', 'access administration pages'));
-    $this->drupalLogin($this->adminUser);
+    $admin_user = $this->drupalCreateUser(array('administer languages', 'translate interface', 'access administration pages'));
+    $this->drupalLogin($admin_user);
   }
 
   /**
@@ -165,10 +158,7 @@ class LocalePluralFormatTest extends WebTestBase {
     // Set French as the site default language.
     $this->config('system.site')->set('default_langcode', 'fr')->save();
 
-    // Visit User Info page before updating translation strings. Change the
-    // created time to ensure that the we're dealing in seconds and it can't be
-    // exactly 1 minute.
-    $this->adminUser->set('created', time() - 1)->save();
+    // Visit User Info page before updating translation strings.
     $this->drupalGet('user');
 
     // Member for time should be translated.
@@ -209,12 +199,9 @@ class LocalePluralFormatTest extends WebTestBase {
     // User interface input for translating seconds should not be duplicated
     $this->assertUniqueText('@count seconds', 'Interface translation input for @count seconds only appears once.');
 
-    // Member for time should be translated. Change the created time to ensure
-    // that the we're dealing in multiple seconds and it can't be exactly 1
-    // second or minute.
-    $this->adminUser->set('created', time() - 2)->save();
+    // Member for time should be translated.
     $this->drupalGet('user');
-    $this->assertText("secondes updated", "'Member for' text is translated.");
+    $this->assertText("seconde", "'Member for' text is translated.");
   }
 
   /**

@@ -136,7 +136,7 @@ class ImageFieldDisplayTest extends ImageFieldTestBase {
       // Only verify HTTP headers when using private scheme and the headers are
       // sent by Drupal.
       $this->assertEqual($this->drupalGetHeader('Content-Type'), 'image/png', 'Content-Type header was sent.');
-      $this->assertTrue(strstr($this->drupalGetHeader('Cache-Control'), 'private') !== FALSE, 'Cache-Control header was sent.');
+      $this->assertTrue(strstr($this->drupalGetHeader('Cache-Control'),'private') !== FALSE, 'Cache-Control header was sent.');
 
       // Log out and try to access the file.
       $this->drupalLogout();
@@ -346,7 +346,6 @@ class ImageFieldDisplayTest extends ImageFieldTestBase {
     $alt = $this->randomString(512);
     $title = $this->randomString(1024);
     $edit = array(
-      // Get the path of the 'image-test.png' file.
       'files[settings_default_image_uuid]' => drupal_realpath($images[0]->uri),
       'settings[default_image][alt]' => $alt,
       'settings[default_image][title]' => $title,
@@ -379,8 +378,7 @@ class ImageFieldDisplayTest extends ImageFieldTestBase {
     // Create alt text for the image.
     $alt = $this->randomMachineName();
 
-    // Upload the 'image-test.gif' file.
-    $nid = $this->uploadNodeImage($images[2], $field_name, 'article', $alt);
+    $nid = $this->uploadNodeImage($images[1], $field_name, 'article', $alt);
     $node_storage->resetCache(array($nid));
     $node = $node_storage->load($nid);
     $file = $node->{$field_name}->entity;
@@ -415,8 +413,7 @@ class ImageFieldDisplayTest extends ImageFieldTestBase {
     $this->createImageField($private_field_name, 'article', array('uri_scheme' => 'private'));
     // Add a default image to the new field.
     $edit = array(
-      // Get the path of the 'image-test.gif' file.
-      'files[settings_default_image_uuid]' => drupal_realpath($images[2]->uri),
+      'files[settings_default_image_uuid]' => drupal_realpath($images[1]->uri),
       'settings[default_image][alt]' => $alt,
       'settings[default_image][title]' => $title,
     );
