@@ -136,6 +136,13 @@
       editor.addCommand('drupalunlink', {
         contextSensitive: 1,
         startDisabled: 1,
+        allowedContent: {
+          a: {
+            attributes: {
+              '!href': true
+            }
+          }
+        },
         requiredContent: new CKEDITOR.style({
           element: 'a',
           attributes: {

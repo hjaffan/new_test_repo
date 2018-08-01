@@ -256,7 +256,7 @@ msgid "I have context."
 msgstr "I HAZ KONTEX."
 EOF;
     }
-    elseif ($langcode === 'zz') {
+    else if ($langcode === 'zz') {
       return <<< EOF
 msgid ""
 msgstr ""

@@ -21,9 +21,9 @@ interface AuthenticationProviderChallengeInterface {
   /**
    * Constructs an exception which is used to generate the challenge.
    *
-   * @param \Symfony\Component\HttpFoundation\Request $request
+   * @var \Symfony\Component\HttpFoundation\Request
    *   The request.
-   * @param \Exception $previous
+   * @var \Exception $exception
    *   The previous exception.
    *
    * @return \Symfony\Component\HttpKernel\Exception\HttpExceptionInterface|NULL

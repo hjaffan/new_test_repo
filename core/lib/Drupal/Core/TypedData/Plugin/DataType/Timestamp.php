@@ -15,7 +15,7 @@ use Drupal\Core\TypedData\Type\DateTimeInterface;
  *
  * @DataType(
  *   id = "timestamp",
- *   label = @Translation("Timestamp")
+ *   label = @Translation("String")
  * )
  */
 class Timestamp extends IntegerData implements DateTimeInterface {
@@ -23,7 +23,7 @@ class Timestamp extends IntegerData implements DateTimeInterface {
   /**
    * The data value as a UNIX timestamp.
    *
-   * @var int
+   * @var integer
    */
   protected $value;
 

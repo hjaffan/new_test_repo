@@ -44,7 +44,7 @@ class UserAccessControlHandler extends EntityAccessControlHandler {
           return AccessResult::allowed()->cachePerPermissions()->cacheUntilEntityChanges($entity);
         }
         // Users can view own profiles at all times.
-        elseif ($account->id() == $entity->id()) {
+        else if ($account->id() == $entity->id()) {
           return AccessResult::allowed()->cachePerUser();
         }
         break;

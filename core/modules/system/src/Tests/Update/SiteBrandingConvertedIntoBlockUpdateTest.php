@@ -8,7 +8,9 @@
 namespace Drupal\system\Tests\Update;
 
 /**
- * Tests the upgrade path for page site variables being converted into a block.
+ * Tests the upgrade path for local actions/tasks being converted into blocks.
+ *
+ * @see https://www.drupal.org/node/507488
  *
  * @group system
  */
