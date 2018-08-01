@@ -99,10 +99,10 @@ class TaggedHandlersPass implements CompilerPassInterface {
           if ($param->getClass()) {
             $interface = $param->getClass();
           }
-          elseif ($param->getName() === 'id') {
+          else if ($param->getName() === 'id') {
             $id_pos = $pos;
           }
-          elseif ($param->getName() === 'priority') {
+          else if ($param->getName() === 'priority') {
             $priority_pos = $pos;
           }
           else {

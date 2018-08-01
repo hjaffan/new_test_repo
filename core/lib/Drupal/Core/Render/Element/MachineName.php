@@ -190,17 +190,7 @@ class MachineName extends Textfield {
     }
 
     $element['#attached']['library'][] = 'core/drupal.machine-name';
-    $options = [
-      'replace_pattern',
-      'replace',
-      'maxlength',
-      'target',
-      'label',
-      'field_prefix',
-      'field_suffix',
-      'suffix',
-    ];
-    $element['#attached']['drupalSettings']['machineName']['#' . $source['#id']] = array_intersect_key($element['#machine_name'], array_flip($options));
+    $element['#attached']['drupalSettings']['machineName']['#' . $source['#id']] = $element['#machine_name'];
     $element['#attached']['drupalSettings']['langcode'] = $language->getId();
 
     return $element;

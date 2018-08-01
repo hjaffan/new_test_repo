@@ -16,7 +16,6 @@ use Drupal\Core\Url;
 use Symfony\Cmf\Component\Routing\RouteObjectInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpKernel\Exception\AccessDeniedHttpException;
-use Symfony\Component\Routing\Exception\MethodNotAllowedException;
 use Symfony\Component\Routing\Exception\ResourceNotFoundException;
 use Symfony\Component\Routing\Matcher\UrlMatcherInterface;
 
@@ -169,9 +168,6 @@ class PathValidator implements PathValidatorInterface {
       return FALSE;
     }
     catch (AccessDeniedHttpException $e) {
-      return FALSE;
-    }
-    catch (MethodNotAllowedException $e) {
       return FALSE;
     }
   }

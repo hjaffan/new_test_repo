@@ -614,10 +614,10 @@ class ViewExecutable implements \Serializable {
   /**
    * Sets whether or not AJAX should be used.
    *
-   * If AJAX is used, paging, table sorting, and exposed filters will be fetched
+   * If AJAX is used, paging, tablesorting and exposed filters will be fetched
    * via an AJAX call rather than a page refresh.
    *
-   * @param bool $ajax_enabled
+   * @param bool $use_ajax
    *   TRUE if AJAX should be used, FALSE otherwise.
    */
   public function setAjaxEnabled($ajax_enabled) {

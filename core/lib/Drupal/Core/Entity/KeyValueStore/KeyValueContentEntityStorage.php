@@ -19,8 +19,7 @@ class KeyValueContentEntityStorage extends KeyValueEntityStorage implements Cont
    * {@inheritdoc}
    */
   public function createTranslation(ContentEntityInterface $entity, $langcode, array $values = []) {
-    // @todo Complete the content entity storage implementation in
-    //   https://www.drupal.org/node/2618436.
+    // @todo
   }
 
 }

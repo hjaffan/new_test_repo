@@ -23,20 +23,13 @@ class ConfigExportUITest extends WebTestBase {
    *
    * @var array
    */
-  public static $modules = array('config', 'config_test');
+  public static $modules = array('config', 'config_test', 'config_export_test');
 
   /**
    * {@inheritdoc}
    */
   protected function setUp() {
     parent::setUp();
-
-    // Set up an override.
-    $settings['config']['system.maintenance']['message'] = (object) array(
-      'value' => 'Foo',
-      'required' => TRUE,
-    );
-    $this->writeSettings($settings);
 
     $this->drupalLogin($this->drupalCreateUser(array('export configuration')));
   }

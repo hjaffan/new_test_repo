@@ -16,24 +16,20 @@ use Drupal\Core\StringTranslation\Translator\TranslatorInterface;
 class TranslationManager implements TranslationInterface, TranslatorInterface {
 
   /**
-   * An unsorted array of arrays of active translators.
+   * An array of active translators keyed by priority.
    *
-   * An associative array. The keys are integers that indicate priority. Values
-   * are arrays of TranslatorInterface objects.
-   *
-   * @var \Drupal\Core\StringTranslation\Translator\TranslatorInterface[][]
-   *
-   * @see \Drupal\Core\StringTranslation\TranslationManager::addTranslator()
-   * @see \Drupal\Core\StringTranslation\TranslationManager::sortTranslators()
+   * @var array
+   *   Array of \Drupal\Core\StringTranslation\Translator\TranslatorInterface objects
    */
   protected $translators = array();
 
   /**
-   * An array of translators, sorted by priority.
+   * Holds the array of translators sorted by priority.
    *
    * If this is NULL a rebuild will be triggered.
    *
-   * @var null|\Drupal\Core\StringTranslation\Translator\TranslatorInterface[]
+   * @var array
+   *   An array of path processor objects.
    *
    * @see \Drupal\Core\StringTranslation\TranslationManager::addTranslator()
    * @see \Drupal\Core\StringTranslation\TranslationManager::sortTranslators()
@@ -66,7 +62,8 @@ class TranslationManager implements TranslationInterface, TranslatorInterface {
    * @param int $priority
    *   The priority of the logger being added.
    *
-   * @return $this
+   * @return \Drupal\Core\StringTranslation\TranslationManager
+   *   The called object.
    */
   public function addTranslator(TranslatorInterface $translator, $priority = 0) {
     $this->translators[$priority][] = $translator;
@@ -78,8 +75,8 @@ class TranslationManager implements TranslationInterface, TranslatorInterface {
   /**
    * Sorts translators according to priority.
    *
-   * @return \Drupal\Core\StringTranslation\Translator\TranslatorInterface[]
-   *   A sorted array of translator objects.
+   * @return array
+   *   A sorted array of translators objects.
    */
   protected function sortTranslators() {
     $sorted = array();
